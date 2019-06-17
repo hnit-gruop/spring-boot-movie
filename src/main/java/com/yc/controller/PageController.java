@@ -29,7 +29,7 @@ public class PageController {
 	}
 
 	/**
-	 * 电影详情
+	 * 电影详情111
 	 */
 	@RequestMapping("movieDetail")
 	public String movieDetail(Model m) {
