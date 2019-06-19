@@ -60,4 +60,12 @@ public class PageController {
 		m.addAttribute("index", 3);
 		return "pages/Cinema";
 	}
+	/**
+	 * 榜单
+	 */
+	@RequestMapping("rank")
+	public String rank(Model m) {
+		m.addAttribute("index", 4);
+		return "pages/MovieRank";
+	}
 }

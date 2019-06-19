@@ -28,20 +28,26 @@
 
 <div class="header-placeholder"></div>
 
+<script type="text/javascript">
+	function select(element){
+		$("#list1").find(".active").removeAttr("class");
+		$(element).attr("class","active");
+	}
+</script>
+
 <div class="subnav">
-  <ul class="navbar">
-    <li>
-      <a data-act="subnav-click" data-val="{subnavClick:1}" data-state-val="{subnavId:1}" class="active" href="javascript:void(0);">正在热映</a>
+  <ul class="navbar" id="list1">
+    <li >
+      <a class="active" onclick = "select(this)">正在热映</a>
     </li>
     <li>
-      <a data-act="subnav-click" data-val="{subnavClick:2}" href="https://maoyan.com/films?showType=2">即将上映</a>
+      <a  onclick = "select(this)">即将上映</a>
     </li>
     <li>
-      <a data-act="subnav-click" data-val="{subnavClick:3}" href="https://maoyan.com/films?showType=3">经典影片</a>
+      <a onclick = "select(this)">经典影片</a>
     </li>
   </ul>
 </div>
-
 
     <div class="container" id="app">
 
@@ -137,22 +143,28 @@
   <div class="movies-panel">
     <div class="movies-sorter">
       <div class="cat-sorter">
-        <ul>
+      <script>
+      	function select2(e){
+      		$("#list2").find(".sort-radio-checked").attr("class","sort-control sort-radio");
+    		$(e).attr("class","sort-control sort-radio sort-radio-checked");
+      	}
+      </script>
+        <ul id = "list2">
           <li>
-            <span class="sort-control-group"   onclick="location.href=#">
-              <span class="sort-control sort-radio"></span>
+            <span class="sort-control-group" >
+              <span class="sort-control sort-radio sort-radio-checked" onclick="select2(this)"></span>
               <span class="sort-control-label">按热门排序</span>
             </span>
           </li>
           <li>
-            <span class="sort-control-group"   onclick="location.href=?">
-              <span class="sort-control sort-radio"></span>
+            <span class="sort-control-group" >
+              <span class="sort-control sort-radio" onclick="select2(this)" ></span>
               <span class="sort-control-label">按时间排序</span>
             </span>
           </li>
           <li>
-            <span class="sort-control-group"  style="cursor: default">
-              <span class="sort-control sort-radio sort-radio-checked"></span>
+            <span class="sort-control-group"  >
+              <span class="sort-control sort-radio"  onclick="select2(this)"></span>
               <span class="sort-control-label">按评价排序</span>
             </span>
           </li>

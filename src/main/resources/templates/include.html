@@ -21,7 +21,7 @@
 				<li><a id="a1" href="index">首页</a></li>
 				<li><a id="a2" href="movieList">电影</a></li>
 				<li><a id="a3" href="cinema">影院</a></li>
-				<li><a id="a4" href="#">榜单</a></li>
+				<li><a id="a4" href="rank">榜单</a></li>
 				<li><a href="#">演出</a></li>
 				<li><a href="#">热点</a></li>
 				<li><a href="#">商城</a></li>
@@ -74,35 +74,6 @@
 	<p th:text="|${start} - ${now} All Rights Reserved|"></p>
 </footer>
 
-
-<div class="header-top" style="margin-bottom: 20px"
-	th:fragment="commonHead">
-	<div class="header-inner">
-		<a href="index"><img class="logo" src="img/logo.jpg"></a>
-		<div class="nav">
-			<ul>
-				<li><a href="index">首页</a></li>
-				<li><a href="movieList">电影</a></li>
-				<li><a href="javascript:void(0)">影院</a></li>
-				<li><a href="javascript:void(0)">榜单</a></li>
-			</ul>
-		</div>
-		<div class="user-info">
-			<div class="user-avatar J-login">
-				<img src="img/user_not_login_head.png"> <span class="caret"></span>
-				<ul class="user-menu">
-					<li><a href="./Login.html">登录</a></li>
-					<li><a href="./Login.html">注册</a></li>
-				</ul>
-			</div>
-		</div>
-		<form id="search-film-my" action="">
-			<input name="searchMovie" class="search" type="search" maxlength="32"
-				placeholder="找影视剧" autocomplete="off"> <input class="submit"
-				type="button" value="">
-		</form>
-	</div>
-</div>
 
 
 </html>
