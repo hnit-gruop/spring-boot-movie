@@ -4,14 +4,12 @@
   <resultMap id="BaseResultMap" type="com.yc.bean.Movie">
     <id column="movie_id" jdbcType="INTEGER" property="movieId" />
     <result column="name" jdbcType="VARCHAR" property="name" />
-    <result column="type_id" jdbcType="INTEGER" property="typeId" />
     <result column="duration" jdbcType="INTEGER" property="duration" />
     <result column="release_time" jdbcType="DATE" property="releaseTime" />
     <result column="foreign_name" jdbcType="VARCHAR" property="foreignName" />
     <result column="region" jdbcType="VARCHAR" property="region" />
     <result column="language" jdbcType="VARCHAR" property="language" />
     <result column="description" jdbcType="VARCHAR" property="description" />
-    <result column="actor" jdbcType="VARCHAR" property="actor" />
     <result column="status" jdbcType="VARCHAR" property="status" />
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -73,8 +71,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    movie_id, name, type_id, duration, release_time, foreign_name, region, language, 
-    description, actor, status
+    movie_id, name, duration, release_time, foreign_name, region, language, description, 
+    status
   </sql>
   <select id="selectByExample" parameterType="com.yc.bean.MovieExample" resultMap="BaseResultMap">
     select
@@ -107,14 +105,14 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.yc.bean.Movie">
-    insert into movie (movie_id, name, type_id, 
-      duration, release_time, foreign_name, 
-      region, language, description, 
-      actor, status)
-    values (#{movieId,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{typeId,jdbcType=INTEGER}, 
-      #{duration,jdbcType=INTEGER}, #{releaseTime,jdbcType=DATE}, #{foreignName,jdbcType=VARCHAR}, 
-      #{region,jdbcType=VARCHAR}, #{language,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, 
-      #{actor,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR})
+    insert into movie (movie_id, name, duration, 
+      release_time, foreign_name, region, 
+      language, description, status
+      )
+    values (#{movieId,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{duration,jdbcType=INTEGER}, 
+      #{releaseTime,jdbcType=DATE}, #{foreignName,jdbcType=VARCHAR}, #{region,jdbcType=VARCHAR}, 
+      #{language,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.yc.bean.Movie">
     insert into movie
@@ -124,9 +122,6 @@
       </if>
       <if test="name != null">
         name,
-      </if>
-      <if test="typeId != null">
-        type_id,
       </if>
       <if test="duration != null">
         duration,
@@ -146,9 +141,6 @@
       <if test="description != null">
         description,
       </if>
-      <if test="actor != null">
-        actor,
-      </if>
       <if test="status != null">
         status,
       </if>
@@ -159,9 +151,6 @@
       </if>
       <if test="name != null">
         #{name,jdbcType=VARCHAR},
-      </if>
-      <if test="typeId != null">
-        #{typeId,jdbcType=INTEGER},
       </if>
       <if test="duration != null">
         #{duration,jdbcType=INTEGER},
@@ -180,9 +169,6 @@
       </if>
       <if test="description != null">
         #{description,jdbcType=VARCHAR},
-      </if>
-      <if test="actor != null">
-        #{actor,jdbcType=VARCHAR},
       </if>
       <if test="status != null">
         #{status,jdbcType=VARCHAR},
@@ -204,9 +190,6 @@
       <if test="record.name != null">
         name = #{record.name,jdbcType=VARCHAR},
       </if>
-      <if test="record.typeId != null">
-        type_id = #{record.typeId,jdbcType=INTEGER},
-      </if>
       <if test="record.duration != null">
         duration = #{record.duration,jdbcType=INTEGER},
       </if>
@@ -225,9 +208,6 @@
       <if test="record.description != null">
         description = #{record.description,jdbcType=VARCHAR},
       </if>
-      <if test="record.actor != null">
-        actor = #{record.actor,jdbcType=VARCHAR},
-      </if>
       <if test="record.status != null">
         status = #{record.status,jdbcType=VARCHAR},
       </if>
@@ -240,14 +220,12 @@
     update movie
     set movie_id = #{record.movieId,jdbcType=INTEGER},
       name = #{record.name,jdbcType=VARCHAR},
-      type_id = #{record.typeId,jdbcType=INTEGER},
       duration = #{record.duration,jdbcType=INTEGER},
       release_time = #{record.releaseTime,jdbcType=DATE},
       foreign_name = #{record.foreignName,jdbcType=VARCHAR},
       region = #{record.region,jdbcType=VARCHAR},
       language = #{record.language,jdbcType=VARCHAR},
       description = #{record.description,jdbcType=VARCHAR},
-      actor = #{record.actor,jdbcType=VARCHAR},
       status = #{record.status,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -258,9 +236,6 @@
     <set>
       <if test="name != null">
         name = #{name,jdbcType=VARCHAR},
-      </if>
-      <if test="typeId != null">
-        type_id = #{typeId,jdbcType=INTEGER},
       </if>
       <if test="duration != null">
         duration = #{duration,jdbcType=INTEGER},
@@ -280,9 +255,6 @@
       <if test="description != null">
         description = #{description,jdbcType=VARCHAR},
       </if>
-      <if test="actor != null">
-        actor = #{actor,jdbcType=VARCHAR},
-      </if>
       <if test="status != null">
         status = #{status,jdbcType=VARCHAR},
       </if>
@@ -292,14 +264,12 @@
   <update id="updateByPrimaryKey" parameterType="com.yc.bean.Movie">
     update movie
     set name = #{name,jdbcType=VARCHAR},
-      type_id = #{typeId,jdbcType=INTEGER},
       duration = #{duration,jdbcType=INTEGER},
       release_time = #{releaseTime,jdbcType=DATE},
       foreign_name = #{foreignName,jdbcType=VARCHAR},
       region = #{region,jdbcType=VARCHAR},
       language = #{language,jdbcType=VARCHAR},
       description = #{description,jdbcType=VARCHAR},
-      actor = #{actor,jdbcType=VARCHAR},
       status = #{status,jdbcType=VARCHAR}
     where movie_id = #{movieId,jdbcType=INTEGER}
   </update>

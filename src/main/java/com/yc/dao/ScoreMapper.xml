@@ -2,10 +2,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yc.dao.ScoreMapper">
   <resultMap id="BaseResultMap" type="com.yc.bean.Score">
-    <id column="score_id" jdbcType="INTEGER" property="scoreId" />
-    <result column="score" jdbcType="DOUBLE" property="score" />
-    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <id column="id" jdbcType="INTEGER" property="id" />
     <result column="movie_id" jdbcType="INTEGER" property="movieId" />
+    <result column="score" jdbcType="DOUBLE" property="score" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -66,7 +65,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    score_id, score, user_id, movie_id
+    id, movie_id, score
   </sql>
   <select id="selectByExample" parameterType="com.yc.bean.ScoreExample" resultMap="BaseResultMap">
     select
@@ -86,11 +85,11 @@
     select 
     <include refid="Base_Column_List" />
     from score
-    where score_id = #{scoreId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from score
-    where score_id = #{scoreId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
   </delete>
   <delete id="deleteByExample" parameterType="com.yc.bean.ScoreExample">
     delete from score
@@ -99,39 +98,31 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.yc.bean.Score">
-    insert into score (score_id, score, user_id, 
-      movie_id)
-    values (#{scoreId,jdbcType=INTEGER}, #{score,jdbcType=DOUBLE}, #{userId,jdbcType=INTEGER}, 
-      #{movieId,jdbcType=INTEGER})
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into score (movie_id, score)
+    values (#{movieId,jdbcType=INTEGER}, #{score,jdbcType=DOUBLE})
   </insert>
   <insert id="insertSelective" parameterType="com.yc.bean.Score">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
     insert into score
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="scoreId != null">
-        score_id,
+      <if test="movieId != null">
+        movie_id,
       </if>
       <if test="score != null">
         score,
       </if>
-      <if test="userId != null">
-        user_id,
-      </if>
-      <if test="movieId != null">
-        movie_id,
-      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="scoreId != null">
-        #{scoreId,jdbcType=INTEGER},
+      <if test="movieId != null">
+        #{movieId,jdbcType=INTEGER},
       </if>
       <if test="score != null">
         #{score,jdbcType=DOUBLE},
-      </if>
-      <if test="userId != null">
-        #{userId,jdbcType=INTEGER},
-      </if>
-      <if test="movieId != null">
-        #{movieId,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -144,17 +135,14 @@
   <update id="updateByExampleSelective" parameterType="map">
     update score
     <set>
-      <if test="record.scoreId != null">
-        score_id = #{record.scoreId,jdbcType=INTEGER},
-      </if>
-      <if test="record.score != null">
-        score = #{record.score,jdbcType=DOUBLE},
-      </if>
-      <if test="record.userId != null">
-        user_id = #{record.userId,jdbcType=INTEGER},
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
       </if>
       <if test="record.movieId != null">
         movie_id = #{record.movieId,jdbcType=INTEGER},
+      </if>
+      <if test="record.score != null">
+        score = #{record.score,jdbcType=DOUBLE},
       </if>
     </set>
     <if test="_parameter != null">
@@ -163,10 +151,9 @@
   </update>
   <update id="updateByExample" parameterType="map">
     update score
-    set score_id = #{record.scoreId,jdbcType=INTEGER},
-      score = #{record.score,jdbcType=DOUBLE},
-      user_id = #{record.userId,jdbcType=INTEGER},
-      movie_id = #{record.movieId,jdbcType=INTEGER}
+    set id = #{record.id,jdbcType=INTEGER},
+      movie_id = #{record.movieId,jdbcType=INTEGER},
+      score = #{record.score,jdbcType=DOUBLE}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -174,23 +161,19 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.yc.bean.Score">
     update score
     <set>
-      <if test="score != null">
-        score = #{score,jdbcType=DOUBLE},
-      </if>
-      <if test="userId != null">
-        user_id = #{userId,jdbcType=INTEGER},
-      </if>
       <if test="movieId != null">
         movie_id = #{movieId,jdbcType=INTEGER},
       </if>
+      <if test="score != null">
+        score = #{score,jdbcType=DOUBLE},
+      </if>
     </set>
-    where score_id = #{scoreId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.yc.bean.Score">
     update score
-    set score = #{score,jdbcType=DOUBLE},
-      user_id = #{userId,jdbcType=INTEGER},
-      movie_id = #{movieId,jdbcType=INTEGER}
-    where score_id = #{scoreId,jdbcType=INTEGER}
+    set movie_id = #{movieId,jdbcType=INTEGER},
+      score = #{score,jdbcType=DOUBLE}
+    where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

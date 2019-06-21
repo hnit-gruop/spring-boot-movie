@@ -3,14 +3,14 @@ package com.yc.bean;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ScoreExample {
+public class MovieActorExample {
     protected String orderByClause;
 
     protected boolean distinct;
 
     protected List<Criteria> oredCriteria;
 
-    public ScoreExample() {
+    public MovieActorExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 
@@ -224,63 +224,63 @@ public class ScoreExample {
             return (Criteria) this;
         }
 
-        public Criteria andScoreIsNull() {
-            addCriterion("score is null");
+        public Criteria andActorIdIsNull() {
+            addCriterion("actor_id is null");
             return (Criteria) this;
         }
 
-        public Criteria andScoreIsNotNull() {
-            addCriterion("score is not null");
+        public Criteria andActorIdIsNotNull() {
+            addCriterion("actor_id is not null");
             return (Criteria) this;
         }
 
-        public Criteria andScoreEqualTo(Double value) {
-            addCriterion("score =", value, "score");
+        public Criteria andActorIdEqualTo(Integer value) {
+            addCriterion("actor_id =", value, "actorId");
             return (Criteria) this;
         }
 
-        public Criteria andScoreNotEqualTo(Double value) {
-            addCriterion("score <>", value, "score");
+        public Criteria andActorIdNotEqualTo(Integer value) {
+            addCriterion("actor_id <>", value, "actorId");
             return (Criteria) this;
         }
 
-        public Criteria andScoreGreaterThan(Double value) {
-            addCriterion("score >", value, "score");
+        public Criteria andActorIdGreaterThan(Integer value) {
+            addCriterion("actor_id >", value, "actorId");
             return (Criteria) this;
         }
 
-        public Criteria andScoreGreaterThanOrEqualTo(Double value) {
-            addCriterion("score >=", value, "score");
+        public Criteria andActorIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("actor_id >=", value, "actorId");
             return (Criteria) this;
         }
 
-        public Criteria andScoreLessThan(Double value) {
-            addCriterion("score <", value, "score");
+        public Criteria andActorIdLessThan(Integer value) {
+            addCriterion("actor_id <", value, "actorId");
             return (Criteria) this;
         }
 
-        public Criteria andScoreLessThanOrEqualTo(Double value) {
-            addCriterion("score <=", value, "score");
+        public Criteria andActorIdLessThanOrEqualTo(Integer value) {
+            addCriterion("actor_id <=", value, "actorId");
             return (Criteria) this;
         }
 
-        public Criteria andScoreIn(List<Double> values) {
-            addCriterion("score in", values, "score");
+        public Criteria andActorIdIn(List<Integer> values) {
+            addCriterion("actor_id in", values, "actorId");
             return (Criteria) this;
         }
 
-        public Criteria andScoreNotIn(List<Double> values) {
-            addCriterion("score not in", values, "score");
+        public Criteria andActorIdNotIn(List<Integer> values) {
+            addCriterion("actor_id not in", values, "actorId");
             return (Criteria) this;
         }
 
-        public Criteria andScoreBetween(Double value1, Double value2) {
-            addCriterion("score between", value1, value2, "score");
+        public Criteria andActorIdBetween(Integer value1, Integer value2) {
+            addCriterion("actor_id between", value1, value2, "actorId");
             return (Criteria) this;
         }
 
-        public Criteria andScoreNotBetween(Double value1, Double value2) {
-            addCriterion("score not between", value1, value2, "score");
+        public Criteria andActorIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("actor_id not between", value1, value2, "actorId");
             return (Criteria) this;
         }
     }

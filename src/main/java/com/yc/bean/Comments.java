@@ -13,6 +13,8 @@ public class Comments {
 
     private Timestamp commentsTime;
 
+    private Integer score;
+
     public Integer getCommentsId() {
         return commentsId;
     }
@@ -51,5 +53,13 @@ public class Comments {
 
     public void setCommentsTime(Timestamp commentsTime) {
         this.commentsTime = commentsTime;
+    }
+
+    public Integer getScore() {
+        return score;
+    }
+
+    public void setScore(Integer score) {
+        this.score = score;
     }
 }

@@ -7,8 +7,6 @@ public class Movie {
 
     private String name;
 
-    private Integer typeId;
-
     private Integer duration;
 
     private Date releaseTime;
@@ -21,11 +19,34 @@ public class Movie {
 
     private String description;
 
-    private String actor;
-
     private String status;
+    
+    
+    
+    /**
+     * 非数据库字段
+     */
+    private String coverImage;
+    private Double score;
+    
 
-    public Integer getMovieId() {
+    public Double getScore() {
+		return score;
+	}
+
+	public void setScore(Double score) {
+		this.score = score;
+	}
+
+	public String getCoverImage() {
+		return coverImage;
+	}
+
+	public void setCoverImage(String coverImage) {
+		this.coverImage = coverImage;
+	}
+
+	public Integer getMovieId() {
         return movieId;
     }
 
@@ -39,14 +60,6 @@ public class Movie {
 
     public void setName(String name) {
         this.name = name == null ? null : name.trim();
-    }
-
-    public Integer getTypeId() {
-        return typeId;
-    }
-
-    public void setTypeId(Integer typeId) {
-        this.typeId = typeId;
     }
 
     public Integer getDuration() {
@@ -97,14 +110,6 @@ public class Movie {
         this.description = description == null ? null : description.trim();
     }
 
-    public String getActor() {
-        return actor;
-    }
-
-    public void setActor(String actor) {
-        this.actor = actor == null ? null : actor.trim();
-    }
-
     public String getStatus() {
         return status;
     }
@@ -112,4 +117,5 @@ public class Movie {
     public void setStatus(String status) {
         this.status = status == null ? null : status.trim();
     }
+
 }
