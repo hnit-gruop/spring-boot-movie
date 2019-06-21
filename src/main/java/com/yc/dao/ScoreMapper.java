@@ -10,7 +10,7 @@ public interface ScoreMapper {
 
     int deleteByExample(ScoreExample example);
 
-    int deleteByPrimaryKey(Integer scoreId);
+    int deleteByPrimaryKey(Integer id);
 
     int insert(Score record);
 
@@ -18,7 +18,7 @@ public interface ScoreMapper {
 
     List<Score> selectByExample(ScoreExample example);
 
-    Score selectByPrimaryKey(Integer scoreId);
+    Score selectByPrimaryKey(Integer id);
 
     int updateByExampleSelective(@Param("record") Score record, @Param("example") ScoreExample example);
 

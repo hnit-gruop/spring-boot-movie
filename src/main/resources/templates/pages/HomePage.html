@@ -305,37 +305,40 @@
 						</div>
 					</div>
 				</div>
-
 			</div>
 			<div class="main">
 				<div class="movie-grid">
 					<div class="panel">
 						<div class="panel-header">
 							<span class="panel-more"> <a
-								href="https://maoyan.com/films?showType=1" class="textcolor_red"
+								href="movieList" class="textcolor_red"
 								data-act="all-playingMovie-click"> <span>全部</span>
 							</a> <span class="panel-arrow panel-arrow-red"></span>
-							</span> <span class="panel-title"> <span class="textcolor_red">正在热映（21部）</span>
+							</span> <span class="panel-title"> <span class="textcolor_red">正在热映（<span th:text="${cnt1}"></span>部）</span>
 							</span>
 						</div>
+						
+						<!-- 循环生成 -->
 						<div class="panel-content">
 							<dl class="movie-list">
-							
-							
-								<dd th:each="i:${#numbers.sequence(0,7)}">
+								<dd th:each="m,status:${listShowing}">
 									<div class="movie-item">
-										<a href="movieDetail" target="_blank">
+									
+										<a th:href="@{movieDetail?id={id}(id=${m.movieId})}" target="_blank">
 											<div class="movie-poster">
 												<img class="poster-default" src="img/loading_2.e3d934bf.png">
-												<img
-													src="img/262f95bad79b6ae45b978593157cb68550938.jpg@160w_220h_1e_1c">
+												
+												<!-- 拼接图片路径 -->
+												<img th:src="@{/movieImg/cover/{filename} (filename=${m.coverImage})}"
+												src = "/movieImg/cover/default.jpg">
+												
 												<div class="movie-overlay movie-overlay-bg">
 													<div class="movie-info">
 														<div class="movie-score">
-															<i class="integer">7.</i><i class="fraction">4</i>
+															<i class="integer" th:text=${m.score}></i>
 														</div>
 														<div class="movie-title movie-title-padding"
-															title="黑衣人：全球追缉">黑衣人：全球追缉</div>
+															 th:text="${m.name}"></div>
 													</div>
 												</div>
 											</div>
@@ -343,9 +346,7 @@
 										<div class="movie-detail movie-detail-strong movie-sale">
 											<a href="#" class="active" target="_blank">购 票</a>
 										</div>
-										<div class="movie-ver">
-											<i class="imax3d"></i>
-										</div>
+									
 									</div>
 
 								</dd>
@@ -361,28 +362,27 @@
 								href="https://maoyan.com/films?showType=2"
 								class="textcolor_blue" data-act="all-upcomingMovie-click"> <span>全部</span>
 							</a> <span class="panel-arrow panel-arrow-blue"></span>
-							</span> <span class="panel-title"> <span class="textcolor_blue">即将上映（141部）</span>
+							</span> <span class="panel-title"> <span class="textcolor_blue">即将上映（<span th:text="${cnt2}"></span>部）</span>
 							</span>
 						</div>
 						<div class="panel-content">
 							<dl class="movie-list">
-								<dd th:each="i:${#numbers.sequence(0,7)}">
+								<dd th:each="m:${listUpComing}">
 									<div class="movie-item">
-										<a href="https://maoyan.com/films/1230126" target="_blank"
-											data-act="upcomingMovie-click" data-val="{movieid:1230126}">
+										<a th:href="@{movieDetail?id={id}(id=${m.movieId})}" target="_blank">
 											<div class="movie-poster">
-												<img class="poster-default" src="img/loading_2.e3d934bf.png">
-												<img
-													src="img/7fc1fa47e31c1baf1b0ca224dbedf51810582901.jpg@160w_220h_1e_1c">
+											<img th:src="@{/movieImg/cover/{filename} (filename=${m.coverImage})}"
+												src = "/movieImg/cover/default.jpg">
+												
 												<div class="movie-overlay movie-overlay-bg">
 													<div class="movie-info">
-														<div class="movie-title" title="大河唱">大河唱</div>
+														<div class="movie-title" th:text="${m.name}"></div>
 													</div>
 												</div>
 											</div>
 										</a>
 										<div class="movie-detail movie-wish">
-											<span class="stonefont" th:text="${i*100+300}"></span>人想看
+											<span class="stonefont" th:text="100"></span>人想看
 										</div>
 										<div class="movie-detail movie-detail-strong movie-presale">
 											<a class="movie-presale-sep">预告片 </a><a href="#"
@@ -390,7 +390,7 @@
 										</div>
 										<div class="movie-ver"></div>
 									</div>
-									<div class="movie-detail movie-rt">6月18日上映</div>
+									<div class="movie-detail movie-rt" ></div>
 
 								</dd>
 							</dl>

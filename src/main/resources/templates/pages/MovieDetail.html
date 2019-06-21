@@ -37,21 +37,23 @@
     <div class="wrapper clearfix">
       <div class="celeInfo-left">
         <div class="avatar-shadow">
-          <img class="avatar" src="img/cover.jpg" alt="">
+          <img class="avatar" th:src="@{/movieImg/cover/{filename} (filename=${movie.coverImage})}"  >
             <div class="movie-ver"></div>
         </div>
       </div>
       <div class="celeInfo-right clearfix">
             <div class="movie-brief-container">
-      <h3 class="name">最好的我们</h3>
-      <div class="ename ellipsis">My Best Summer</div>
+      <h3 class="name" th:text="${movie.name}">最好的我们</h3>
+      <div class="ename ellipsis" th:text="${movie.foreignName}">My Best Summer</div>
       <ul>
+      	<li class="ellipsis"></li>
         <li class="ellipsis">爱情,青春</li>
         <li class="ellipsis">
-        中国大陆
-          / 110分钟
+        <span th:text="${movie.region}"></span>
+          / <span th:text=${movie.duration}></span>分钟
         </li>
-        <li class="ellipsis">2019-06-06 18:00大陆上映</li>
+        <li class="ellipsis"><span th:text="${#dates.format(movie.releaseTime, 'yyyy-MM-dd')}"></span>
+        上映</li>
       </ul>
     </div>
     <div class="action-buyBtn">
@@ -124,7 +126,7 @@
       <h3>剧情简介</h3>
     </div>
     <div class="mod-content">
-                    <span class="dra">每个人的心里大概都藏着一个念念不忘的人。一个偶然被提及的名字，让女摄
+                    <span class="dra" th:text="${movie.description}">每个人的心里大概都藏着一个念念不忘的人。一个偶然被提及的名字，让女摄
 影师耿耿（何蓝逗 饰）内心掀起万千波澜，触动了回忆的开关，那个撩人心动的少年余淮（陈飞宇 
 饰）再度闯进她的思绪。那是记忆里最好的时光，“学渣”耿耿和“学霸”余淮成了同桌，还结识了简单（王初伊 饰）、贝塔（周楚濋 饰）、徐延亮（陈帅 
 饰）。校园里充盈着专属少男少女们的懵懂、青涩、怦然心动和勇敢，耿耿余淮也拥有了他们的约定。高考后，当耿耿满怀期待憧憬约定兑现之时，余淮却忽然消失

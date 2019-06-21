@@ -1,11 +1,11 @@
 package com.yc.bean;
 
-public class Score {
+public class MovieActor {
     private Integer id;
 
     private Integer movieId;
 
-    private Double score;
+    private Integer actorId;
 
     public Integer getId() {
         return id;
@@ -23,11 +23,11 @@ public class Score {
         this.movieId = movieId;
     }
 
-    public Double getScore() {
-        return score;
+    public Integer getActorId() {
+        return actorId;
     }
 
-    public void setScore(Double score) {
-        this.score = score;
+    public void setActorId(Integer actorId) {
+        this.actorId = actorId;
     }
 }
