@@ -5,7 +5,7 @@ import java.util.Date;
 public class Actor {
     private Integer actorId;
 
-    private String name;
+    private String aname;
 
     private Integer height;
 
@@ -37,12 +37,12 @@ public class Actor {
         this.actorId = actorId;
     }
 
-    public String getName() {
-        return name;
+    public String getAname() {
+        return aname;
     }
 
-    public void setName(String name) {
-        this.name = name == null ? null : name.trim();
+    public void setAname(String aname) {
+        this.aname = aname == null ? null : aname.trim();
     }
 
     public Integer getHeight() {

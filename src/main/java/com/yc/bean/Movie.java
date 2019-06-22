@@ -22,7 +22,6 @@ public class Movie {
     private String status;
     
     
-    
     /**
      * 非数据库字段
      */

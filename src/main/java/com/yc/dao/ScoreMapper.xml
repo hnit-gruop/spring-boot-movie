@@ -4,7 +4,8 @@
   <resultMap id="BaseResultMap" type="com.yc.bean.Score">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="movie_id" jdbcType="INTEGER" property="movieId" />
-    <result column="score" jdbcType="DOUBLE" property="score" />
+    <result column="sum_score" jdbcType="DOUBLE" property="sumScore" />
+    <result column="sum_people" jdbcType="INTEGER" property="sumPeople" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -65,7 +66,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, movie_id, score
+    id, movie_id, sum_score, sum_people
   </sql>
   <select id="selectByExample" parameterType="com.yc.bean.ScoreExample" resultMap="BaseResultMap">
     select
@@ -101,8 +102,10 @@
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into score (movie_id, score)
-    values (#{movieId,jdbcType=INTEGER}, #{score,jdbcType=DOUBLE})
+    insert into score (movie_id, sum_score, sum_people
+      )
+    values (#{movieId,jdbcType=INTEGER}, #{sumScore,jdbcType=DOUBLE}, #{sumPeople,jdbcType=INTEGER}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.yc.bean.Score">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
@@ -113,16 +116,22 @@
       <if test="movieId != null">
         movie_id,
       </if>
-      <if test="score != null">
-        score,
+      <if test="sumScore != null">
+        sum_score,
+      </if>
+      <if test="sumPeople != null">
+        sum_people,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="movieId != null">
         #{movieId,jdbcType=INTEGER},
       </if>
-      <if test="score != null">
-        #{score,jdbcType=DOUBLE},
+      <if test="sumScore != null">
+        #{sumScore,jdbcType=DOUBLE},
+      </if>
+      <if test="sumPeople != null">
+        #{sumPeople,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -141,8 +150,11 @@
       <if test="record.movieId != null">
         movie_id = #{record.movieId,jdbcType=INTEGER},
       </if>
-      <if test="record.score != null">
-        score = #{record.score,jdbcType=DOUBLE},
+      <if test="record.sumScore != null">
+        sum_score = #{record.sumScore,jdbcType=DOUBLE},
+      </if>
+      <if test="record.sumPeople != null">
+        sum_people = #{record.sumPeople,jdbcType=INTEGER},
       </if>
     </set>
     <if test="_parameter != null">
@@ -153,7 +165,8 @@
     update score
     set id = #{record.id,jdbcType=INTEGER},
       movie_id = #{record.movieId,jdbcType=INTEGER},
-      score = #{record.score,jdbcType=DOUBLE}
+      sum_score = #{record.sumScore,jdbcType=DOUBLE},
+      sum_people = #{record.sumPeople,jdbcType=INTEGER}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -164,8 +177,11 @@
       <if test="movieId != null">
         movie_id = #{movieId,jdbcType=INTEGER},
       </if>
-      <if test="score != null">
-        score = #{score,jdbcType=DOUBLE},
+      <if test="sumScore != null">
+        sum_score = #{sumScore,jdbcType=DOUBLE},
+      </if>
+      <if test="sumPeople != null">
+        sum_people = #{sumPeople,jdbcType=INTEGER},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
@@ -173,7 +189,8 @@
   <update id="updateByPrimaryKey" parameterType="com.yc.bean.Score">
     update score
     set movie_id = #{movieId,jdbcType=INTEGER},
-      score = #{score,jdbcType=DOUBLE}
+      sum_score = #{sumScore,jdbcType=DOUBLE},
+      sum_people = #{sumPeople,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

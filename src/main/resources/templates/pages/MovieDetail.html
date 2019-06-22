@@ -253,7 +253,7 @@
                   <div class="comment-list-container" data-hot="10">
 
 <ul>
-    <li class="comment-container "  th:each="i:${#numbers.sequence(0,4)}" >
+    <li class="comment-container "  th:each="c:${commonts}" >
       <div class="portrait-container">
         <div class="portrait">
           <img src="img/user_head.jpg" alt="">
@@ -282,16 +282,13 @@
 					<li>
 				<i class="half-star left active"></i><i class="half-star right active"></i>    </li>
 			</ul>
-
           </div>
           <div class="approve " data-id="1065787432">
-            <i data-act="comment-approve-click" class="approve-icon"></i><span class="num">9848</span>
+            <i  class="approve-icon"></i><span class="num" th:text="${c.agreecnt}">0</span>
           </div>
         </div>
 		
-        <div class="comment-content">和自己喜欢的人坐同桌真的好幸福～午睡的时候他先醒来就会看我睡觉的样子，
-	时不时和他皮肤触碰，时不时请教他难题，当初我有那么一瞬间以为他是喜欢我的，但是他不是余淮，而我更不是耿耿，终究没有一起。平凡如我们，可能从来没有
-	遇到过“余淮”，但我们一定拥有过这样真挚的喜欢，一定有属于自己的、熠熠生辉的青春</div>
+        <div class="comment-content"><span th:text="${c.comments}"></span></div>
       </div>
     </li>
 </ul>

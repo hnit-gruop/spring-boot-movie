@@ -1,14 +1,21 @@
 package com.yc.service;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.List;
+import java.util.Map;
 
+import com.github.pagehelper.PageInfo;
 import com.yc.bean.Movie;
 
 public interface MovieService {
+	PageInfo<Movie> findAllMoive(int pageNum);
 	
+	Map<String,Object> findMovieDetailsByMovieId(int movieId) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException;
 	
+	int findTotal();
+	//数据库固定字段
 	/**
-	 * 上映中
+	 * 上映中 
 	 */
 	String showing_status = "showing";
 	/**

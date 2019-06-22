@@ -224,63 +224,123 @@ public class ScoreExample {
             return (Criteria) this;
         }
 
-        public Criteria andScoreIsNull() {
-            addCriterion("score is null");
+        public Criteria andSumScoreIsNull() {
+            addCriterion("sum_score is null");
             return (Criteria) this;
         }
 
-        public Criteria andScoreIsNotNull() {
-            addCriterion("score is not null");
+        public Criteria andSumScoreIsNotNull() {
+            addCriterion("sum_score is not null");
             return (Criteria) this;
         }
 
-        public Criteria andScoreEqualTo(Double value) {
-            addCriterion("score =", value, "score");
+        public Criteria andSumScoreEqualTo(Double value) {
+            addCriterion("sum_score =", value, "sumScore");
             return (Criteria) this;
         }
 
-        public Criteria andScoreNotEqualTo(Double value) {
-            addCriterion("score <>", value, "score");
+        public Criteria andSumScoreNotEqualTo(Double value) {
+            addCriterion("sum_score <>", value, "sumScore");
             return (Criteria) this;
         }
 
-        public Criteria andScoreGreaterThan(Double value) {
-            addCriterion("score >", value, "score");
+        public Criteria andSumScoreGreaterThan(Double value) {
+            addCriterion("sum_score >", value, "sumScore");
             return (Criteria) this;
         }
 
-        public Criteria andScoreGreaterThanOrEqualTo(Double value) {
-            addCriterion("score >=", value, "score");
+        public Criteria andSumScoreGreaterThanOrEqualTo(Double value) {
+            addCriterion("sum_score >=", value, "sumScore");
             return (Criteria) this;
         }
 
-        public Criteria andScoreLessThan(Double value) {
-            addCriterion("score <", value, "score");
+        public Criteria andSumScoreLessThan(Double value) {
+            addCriterion("sum_score <", value, "sumScore");
             return (Criteria) this;
         }
 
-        public Criteria andScoreLessThanOrEqualTo(Double value) {
-            addCriterion("score <=", value, "score");
+        public Criteria andSumScoreLessThanOrEqualTo(Double value) {
+            addCriterion("sum_score <=", value, "sumScore");
             return (Criteria) this;
         }
 
-        public Criteria andScoreIn(List<Double> values) {
-            addCriterion("score in", values, "score");
+        public Criteria andSumScoreIn(List<Double> values) {
+            addCriterion("sum_score in", values, "sumScore");
             return (Criteria) this;
         }
 
-        public Criteria andScoreNotIn(List<Double> values) {
-            addCriterion("score not in", values, "score");
+        public Criteria andSumScoreNotIn(List<Double> values) {
+            addCriterion("sum_score not in", values, "sumScore");
             return (Criteria) this;
         }
 
-        public Criteria andScoreBetween(Double value1, Double value2) {
-            addCriterion("score between", value1, value2, "score");
+        public Criteria andSumScoreBetween(Double value1, Double value2) {
+            addCriterion("sum_score between", value1, value2, "sumScore");
             return (Criteria) this;
         }
 
-        public Criteria andScoreNotBetween(Double value1, Double value2) {
-            addCriterion("score not between", value1, value2, "score");
+        public Criteria andSumScoreNotBetween(Double value1, Double value2) {
+            addCriterion("sum_score not between", value1, value2, "sumScore");
+            return (Criteria) this;
+        }
+
+        public Criteria andSumPeopleIsNull() {
+            addCriterion("sum_people is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSumPeopleIsNotNull() {
+            addCriterion("sum_people is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSumPeopleEqualTo(Integer value) {
+            addCriterion("sum_people =", value, "sumPeople");
+            return (Criteria) this;
+        }
+
+        public Criteria andSumPeopleNotEqualTo(Integer value) {
+            addCriterion("sum_people <>", value, "sumPeople");
+            return (Criteria) this;
+        }
+
+        public Criteria andSumPeopleGreaterThan(Integer value) {
+            addCriterion("sum_people >", value, "sumPeople");
+            return (Criteria) this;
+        }
+
+        public Criteria andSumPeopleGreaterThanOrEqualTo(Integer value) {
+            addCriterion("sum_people >=", value, "sumPeople");
+            return (Criteria) this;
+        }
+
+        public Criteria andSumPeopleLessThan(Integer value) {
+            addCriterion("sum_people <", value, "sumPeople");
+            return (Criteria) this;
+        }
+
+        public Criteria andSumPeopleLessThanOrEqualTo(Integer value) {
+            addCriterion("sum_people <=", value, "sumPeople");
+            return (Criteria) this;
+        }
+
+        public Criteria andSumPeopleIn(List<Integer> values) {
+            addCriterion("sum_people in", values, "sumPeople");
+            return (Criteria) this;
+        }
+
+        public Criteria andSumPeopleNotIn(List<Integer> values) {
+            addCriterion("sum_people not in", values, "sumPeople");
+            return (Criteria) this;
+        }
+
+        public Criteria andSumPeopleBetween(Integer value1, Integer value2) {
+            addCriterion("sum_people between", value1, value2, "sumPeople");
+            return (Criteria) this;
+        }
+
+        public Criteria andSumPeopleNotBetween(Integer value1, Integer value2) {
+            addCriterion("sum_people not between", value1, value2, "sumPeople");
             return (Criteria) this;
         }
     }

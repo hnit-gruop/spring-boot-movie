@@ -474,6 +474,66 @@ public class CommentsExample {
             addCriterion("score not between", value1, value2, "score");
             return (Criteria) this;
         }
+
+        public Criteria andAgreecntIsNull() {
+            addCriterion("agreeCnt is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAgreecntIsNotNull() {
+            addCriterion("agreeCnt is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAgreecntEqualTo(Integer value) {
+            addCriterion("agreeCnt =", value, "agreecnt");
+            return (Criteria) this;
+        }
+
+        public Criteria andAgreecntNotEqualTo(Integer value) {
+            addCriterion("agreeCnt <>", value, "agreecnt");
+            return (Criteria) this;
+        }
+
+        public Criteria andAgreecntGreaterThan(Integer value) {
+            addCriterion("agreeCnt >", value, "agreecnt");
+            return (Criteria) this;
+        }
+
+        public Criteria andAgreecntGreaterThanOrEqualTo(Integer value) {
+            addCriterion("agreeCnt >=", value, "agreecnt");
+            return (Criteria) this;
+        }
+
+        public Criteria andAgreecntLessThan(Integer value) {
+            addCriterion("agreeCnt <", value, "agreecnt");
+            return (Criteria) this;
+        }
+
+        public Criteria andAgreecntLessThanOrEqualTo(Integer value) {
+            addCriterion("agreeCnt <=", value, "agreecnt");
+            return (Criteria) this;
+        }
+
+        public Criteria andAgreecntIn(List<Integer> values) {
+            addCriterion("agreeCnt in", values, "agreecnt");
+            return (Criteria) this;
+        }
+
+        public Criteria andAgreecntNotIn(List<Integer> values) {
+            addCriterion("agreeCnt not in", values, "agreecnt");
+            return (Criteria) this;
+        }
+
+        public Criteria andAgreecntBetween(Integer value1, Integer value2) {
+            addCriterion("agreeCnt between", value1, value2, "agreecnt");
+            return (Criteria) this;
+        }
+
+        public Criteria andAgreecntNotBetween(Integer value1, Integer value2) {
+            addCriterion("agreeCnt not between", value1, value2, "agreecnt");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

@@ -4,17 +4,17 @@ package com.yc.service.impl;
 
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.yc.bean.MovieImage;
 import com.yc.bean.MovieImageExample;
 import com.yc.dao.MovieImageMapper;
-import com.yc.service.MovieImageServie;
-
+import com.yc.service.MovieImageService;
 
 @Service
-public class MovieImageServiceImpl implements MovieImageServie{
+public class MovieImageServiceImpl implements MovieImageService{
 	
 	
 	@Autowired
@@ -26,7 +26,7 @@ public class MovieImageServiceImpl implements MovieImageServie{
 	@Override
 	public String getCover(int movieId) {
 		MovieImageExample example = new MovieImageExample();
-		example.createCriteria().andMovieIdEqualTo(movieId).andTypeEqualTo(MovieImageServie.COVER_TYPE);
+		example.createCriteria().andMovieIdEqualTo(movieId).andTypeEqualTo(MovieImageService.COVER_TYPE);
 		List<MovieImage> list = movieImageMapper.selectByExample(example);
 		if(list.size()>0)
 			return list.get(0).getImage();
@@ -58,6 +58,14 @@ public class MovieImageServiceImpl implements MovieImageServie{
 	@Override
 	public int update(MovieImage mi) {
 		return 0;
+	}
+
+	@Override
+	public List<MovieImage> getMovieImageByMovieId(int movieId) {
+		MovieImageExample mie = new MovieImageExample();
+		mie.createCriteria().andMovieIdEqualTo(movieId);
+		List<MovieImage> selectByExample = movieImageMapper.selectByExample(mie);
+		return selectByExample;
 	}
 
 

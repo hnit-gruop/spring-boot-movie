@@ -8,6 +8,7 @@
     <result column="movie_id" jdbcType="INTEGER" property="movieId" />
     <result column="comments_time" jdbcType="TIMESTAMP" property="commentsTime" />
     <result column="score" jdbcType="INTEGER" property="score" />
+    <result column="agreeCnt" jdbcType="INTEGER" property="agreecnt" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -68,7 +69,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    comments_id, user_id, comments, movie_id, comments_time, score
+    comments_id, user_id, comments, movie_id, comments_time, score, agreeCnt
   </sql>
   <select id="selectByExample" parameterType="com.yc.bean.CommentsExample" resultMap="BaseResultMap">
     select
@@ -102,11 +103,11 @@
   </delete>
   <insert id="insert" parameterType="com.yc.bean.Comments">
     insert into comments (comments_id, user_id, comments, 
-      movie_id, comments_time, score
-      )
+      movie_id, comments_time, score, 
+      agreeCnt)
     values (#{commentsId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{comments,jdbcType=VARCHAR}, 
-      #{movieId,jdbcType=INTEGER}, #{commentsTime,jdbcType=TIMESTAMP}, #{score,jdbcType=INTEGER}
-      )
+      #{movieId,jdbcType=INTEGER}, #{commentsTime,jdbcType=TIMESTAMP}, #{score,jdbcType=INTEGER}, 
+      #{agreecnt,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.yc.bean.Comments">
     insert into comments
@@ -129,6 +130,9 @@
       <if test="score != null">
         score,
       </if>
+      <if test="agreecnt != null">
+        agreeCnt,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="commentsId != null">
@@ -148,6 +152,9 @@
       </if>
       <if test="score != null">
         #{score,jdbcType=INTEGER},
+      </if>
+      <if test="agreecnt != null">
+        #{agreecnt,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -178,6 +185,9 @@
       <if test="record.score != null">
         score = #{record.score,jdbcType=INTEGER},
       </if>
+      <if test="record.agreecnt != null">
+        agreeCnt = #{record.agreecnt,jdbcType=INTEGER},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -190,7 +200,8 @@
       comments = #{record.comments,jdbcType=VARCHAR},
       movie_id = #{record.movieId,jdbcType=INTEGER},
       comments_time = #{record.commentsTime,jdbcType=TIMESTAMP},
-      score = #{record.score,jdbcType=INTEGER}
+      score = #{record.score,jdbcType=INTEGER},
+      agreeCnt = #{record.agreecnt,jdbcType=INTEGER}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -213,6 +224,9 @@
       <if test="score != null">
         score = #{score,jdbcType=INTEGER},
       </if>
+      <if test="agreecnt != null">
+        agreeCnt = #{agreecnt,jdbcType=INTEGER},
+      </if>
     </set>
     where comments_id = #{commentsId,jdbcType=INTEGER}
   </update>
@@ -222,7 +236,8 @@
       comments = #{comments,jdbcType=VARCHAR},
       movie_id = #{movieId,jdbcType=INTEGER},
       comments_time = #{commentsTime,jdbcType=TIMESTAMP},
-      score = #{score,jdbcType=INTEGER}
+      score = #{score,jdbcType=INTEGER},
+      agreeCnt = #{agreecnt,jdbcType=INTEGER}
     where comments_id = #{commentsId,jdbcType=INTEGER}
   </update>
 </mapper>

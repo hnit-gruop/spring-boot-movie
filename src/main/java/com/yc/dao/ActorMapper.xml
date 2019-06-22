@@ -3,7 +3,7 @@
 <mapper namespace="com.yc.dao.ActorMapper">
   <resultMap id="BaseResultMap" type="com.yc.bean.Actor">
     <id column="actor_id" jdbcType="INTEGER" property="actorId" />
-    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="aname" jdbcType="VARCHAR" property="aname" />
     <result column="height" jdbcType="INTEGER" property="height" />
     <result column="second_name" jdbcType="VARCHAR" property="secondName" />
     <result column="position" jdbcType="VARCHAR" property="position" />
@@ -75,7 +75,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    actor_id, name, height, second_name, position, country, sex, birthday, nation, birthplace, 
+    actor_id, aname, height, second_name, position, country, sex, birthday, nation, birthplace, 
     constellation, description, pic
   </sql>
   <select id="selectByExample" parameterType="com.yc.bean.ActorExample" resultMap="BaseResultMap">
@@ -109,12 +109,12 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.yc.bean.Actor">
-    insert into actor (actor_id, name, height, 
+    insert into actor (actor_id, aname, height, 
       second_name, position, country, 
       sex, birthday, nation, 
       birthplace, constellation, description, 
       pic)
-    values (#{actorId,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{height,jdbcType=INTEGER}, 
+    values (#{actorId,jdbcType=INTEGER}, #{aname,jdbcType=VARCHAR}, #{height,jdbcType=INTEGER}, 
       #{secondName,jdbcType=VARCHAR}, #{position,jdbcType=VARCHAR}, #{country,jdbcType=VARCHAR}, 
       #{sex,jdbcType=VARCHAR}, #{birthday,jdbcType=TIMESTAMP}, #{nation,jdbcType=VARCHAR}, 
       #{birthplace,jdbcType=VARCHAR}, #{constellation,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, 
@@ -126,8 +126,8 @@
       <if test="actorId != null">
         actor_id,
       </if>
-      <if test="name != null">
-        name,
+      <if test="aname != null">
+        aname,
       </if>
       <if test="height != null">
         height,
@@ -167,8 +167,8 @@
       <if test="actorId != null">
         #{actorId,jdbcType=INTEGER},
       </if>
-      <if test="name != null">
-        #{name,jdbcType=VARCHAR},
+      <if test="aname != null">
+        #{aname,jdbcType=VARCHAR},
       </if>
       <if test="height != null">
         #{height,jdbcType=INTEGER},
@@ -217,8 +217,8 @@
       <if test="record.actorId != null">
         actor_id = #{record.actorId,jdbcType=INTEGER},
       </if>
-      <if test="record.name != null">
-        name = #{record.name,jdbcType=VARCHAR},
+      <if test="record.aname != null">
+        aname = #{record.aname,jdbcType=VARCHAR},
       </if>
       <if test="record.height != null">
         height = #{record.height,jdbcType=INTEGER},
@@ -261,7 +261,7 @@
   <update id="updateByExample" parameterType="map">
     update actor
     set actor_id = #{record.actorId,jdbcType=INTEGER},
-      name = #{record.name,jdbcType=VARCHAR},
+      aname = #{record.aname,jdbcType=VARCHAR},
       height = #{record.height,jdbcType=INTEGER},
       second_name = #{record.secondName,jdbcType=VARCHAR},
       position = #{record.position,jdbcType=VARCHAR},
@@ -280,8 +280,8 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.yc.bean.Actor">
     update actor
     <set>
-      <if test="name != null">
-        name = #{name,jdbcType=VARCHAR},
+      <if test="aname != null">
+        aname = #{aname,jdbcType=VARCHAR},
       </if>
       <if test="height != null">
         height = #{height,jdbcType=INTEGER},
@@ -321,7 +321,7 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.yc.bean.Actor">
     update actor
-    set name = #{name,jdbcType=VARCHAR},
+    set aname = #{aname,jdbcType=VARCHAR},
       height = #{height,jdbcType=INTEGER},
       second_name = #{secondName,jdbcType=VARCHAR},
       position = #{position,jdbcType=VARCHAR},

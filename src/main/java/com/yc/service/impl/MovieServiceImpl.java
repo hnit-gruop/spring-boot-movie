@@ -1,17 +1,32 @@
 package com.yc.service.impl;
 
+import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import javax.annotation.Resource;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
 import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.yc.bean.Movie;
+import com.yc.bean.MovieActor;
 import com.yc.bean.MovieExample;
+import com.yc.bean.MovieImage;
+import com.yc.bean.MovieType;
+import com.yc.bean.Type;
 import com.yc.dao.MovieMapper;
-import com.yc.service.MovieImageServie;
+import com.yc.service.MovieActorService;
+import com.yc.service.MovieImageService;
 import com.yc.service.MovieService;
+import com.yc.service.RedisService;
 import com.yc.service.ScoreService;
+import com.yc.util.Utils;
 
 @Service
 public class MovieServiceImpl implements MovieService{
@@ -21,10 +36,18 @@ public class MovieServiceImpl implements MovieService{
 	MovieMapper movieMapper;
 	
 	@Autowired
-	MovieImageServie movieImageServie;
+	MovieImageService movieImageService;
 	
 	@Autowired
 	ScoreService scoreService;
+	
+	@Autowired
+	RedisTemplate redisTemplate;
+	
+	@Resource
+	MovieActorService movieActorService;
+	@Autowired
+	RedisService redisServie;
 	
 	@Override
 	public List<Movie> listShowing() {
@@ -68,7 +91,7 @@ public class MovieServiceImpl implements MovieService{
 
 	@Override
 	public void setCover(Movie movie) {
-		String cover = movieImageServie.getCover(movie.getMovieId());
+		String cover = movieImageService.getCover(movie.getMovieId());
 		movie.setCoverImage(cover);
 	}
 
@@ -81,8 +104,14 @@ public class MovieServiceImpl implements MovieService{
 
 	@Override
 	public void setScore(Movie movie) {
-		double score = scoreService.get(movie.getMovieId());
-		movie.setScore(score);
+		
+//		// 在数据库中取值 
+//		double score = scoreService.get(movie.getMovieId()); 
+
+		
+		//在redis中取值
+		double avgScore = redisServie.getAvgScore(movie.getMovieId());
+		movie.setScore(avgScore);
 	}
 
 	@Override
@@ -107,4 +136,35 @@ public class MovieServiceImpl implements MovieService{
 		long cnt = movieMapper.countByExample(e);
 		return (int)cnt;
 	}
+
+	
+	@Override
+	public PageInfo<Movie> findAllMoive(int pageNum) {
+		PageHelper.startPage(pageNum,5);
+		List<Movie> lm = movieMapper.selectByExample(null);
+		PageInfo<Movie> list = new PageInfo<>(lm);
+		return list;
+	}
+
+	
+	
+	@Override
+	public Map<String, Object> findMovieDetailsByMovieId(int movieId)
+			throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
+		Map<String,Object> map = new HashMap<>();
+		Movie movie = movieMapper.selectByPrimaryKey(movieId);
+		Utils.transformBeanToMap(movie, map);
+		List<MovieActor> actorByMovieId = movieActorService.getActorByMovieId(movieId);
+		List<MovieImage> movieImageByMovieId = movieImageService.getMovieImageByMovieId(movieId);
+		map.put("actorList", actorByMovieId);
+		map.put("imageList", movieImageByMovieId);
+		return map;
+	}
+
+	@Override
+	public int findTotal() {
+		List<Movie> lm = movieMapper.selectByExample(null);
+		return lm.size();
+	}
+
 }

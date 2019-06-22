@@ -15,6 +15,8 @@ public class Comments {
 
     private Integer score;
 
+    private Integer agreecnt;
+
     public Integer getCommentsId() {
         return commentsId;
     }
@@ -61,5 +63,13 @@ public class Comments {
 
     public void setScore(Integer score) {
         this.score = score;
+    }
+
+    public Integer getAgreecnt() {
+        return agreecnt;
+    }
+
+    public void setAgreecnt(Integer agreecnt) {
+        this.agreecnt = agreecnt;
     }
 }
